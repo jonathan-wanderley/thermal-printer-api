@@ -8,7 +8,7 @@ export default class ProductController {
     this.usecase = usecase;
   }
 
-  find() {
+  get find() {
     return async (req: Request, res: Response) => {
       const { search } = req.query;
 
