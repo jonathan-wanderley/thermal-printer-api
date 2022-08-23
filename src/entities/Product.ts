@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose';
 import IProduct from './interfaces/IProduct';
 
-export const jobSchema = new Schema<IProduct>(
+export const productSchema = new Schema<IProduct>(
   {
     name: {
       type: Schema.Types.String,
@@ -13,10 +13,11 @@ export const jobSchema = new Schema<IProduct>(
       type: Schema.Types.Number,
     },
     ingredients: [{ type: Schema.Types.String }],
+    categories: [{ type: Schema.Types.String }],
   },
   { timestamps: true },
 );
 
-jobSchema.index({ '$**': 'text' });
+productSchema.index({ '$**': 'text' });
 
-export default model<IProduct>('Product', jobSchema);
+export default model<IProduct>('Product', productSchema);

@@ -3,5 +3,5 @@ export default interface IProduct {
   photo: string;
   price: number;
   ingredients: string[];
-  category: string[];
+  categories: string[];
 }
