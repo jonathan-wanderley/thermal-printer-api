@@ -1,12 +1,26 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Model } from 'mongoose';
-import Product from '../../entities/Product';
 import IProduct from '../../entities/interfaces/IProduct';
+import Product from '../../entities/Product';
 import IProductRepository from './interface';
 
-export default class ProductRepository implements IProductRepository {
-  private Product: Model<IProduct> = Product;
+const { ObjectId } = require('mongoose').Types;
 
-  find(payload: any): Promise<any> {
-    throw new Error('Method not implemented.');
+export default class ProductRepository implements IProductRepository {
+  private productModel: Model<IProduct> = Product;
+
+  async find(search: string): Promise<any> {
+    if (!search || search === undefined) {
+      return await this.productModel.find({});
+    }
+
+    let possibleId = null;
+    if (ObjectId.isValid(search)) {
+      possibleId = search;
+    }
+
+    return await this.productModel.find({
+      $or: [{ _id: possibleId }, { name: search }],
+    });
   }
 }
