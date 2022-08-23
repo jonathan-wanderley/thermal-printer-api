@@ -1,9 +1,8 @@
 import Express, { Application } from 'express';
 import { mongoDBConnection } from '../database';
+import 'express-async-errors';
 import BaseRoutes from './BaseRoutes';
 import errorHandler from './middlewares/errorHandler';
-
-require('express-async-errors');
 
 export default class App {
   private instance: Application;
