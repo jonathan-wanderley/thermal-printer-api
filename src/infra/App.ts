@@ -1,4 +1,5 @@
 import Express, { Application } from 'express';
+import { mongoDBConnection } from '../database';
 import BaseRoutes from './BaseRoutes';
 
 export default class App {
@@ -10,13 +11,20 @@ export default class App {
     this.instance = Express();
   }
 
-  setup(port?: number): void {
+  async setup(port?: number): Promise<void> {
     const selectedPort = port || this.defaultPort;
 
     this.instance.use(Express.json());
     this.instance.use(BaseRoutes);
+
+    await mongoDBConnection.createConnection();
+
     this.instance.listen(selectedPort, () => {
       console.log(`Server running on port: ${selectedPort}`);
     });
+  }
+
+  getInstance() {
+    return this.instance;
   }
 }
