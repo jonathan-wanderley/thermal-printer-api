@@ -1,6 +1,9 @@
 import Express, { Application } from 'express';
 import { mongoDBConnection } from '../database';
 import BaseRoutes from './BaseRoutes';
+import errorHandler from './middlewares/errorHandler';
+
+require('express-async-errors');
 
 export default class App {
   private instance: Application;
@@ -16,6 +19,7 @@ export default class App {
 
     this.instance.use(Express.json());
     this.instance.use(BaseRoutes);
+    this.instance.use(errorHandler);
 
     await mongoDBConnection.createConnection();
 
