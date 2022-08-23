@@ -6,4 +6,8 @@ export default class ProductUseCase {
   constructor(productRepository: IProductRepository) {
     this.productRepository = productRepository;
   }
+
+  async find(search: string) {
+    return await this.productRepository.find(search);
+  }
 }
