@@ -23,4 +23,8 @@ export default class OrderRepository implements IOrderRepository {
       }
     });
   }
+
+  async finish(id: string) {
+    return await this.orderModel.findOneAndUpdate({ _id: id }, { done: true }, { new: true })
+  }
 }

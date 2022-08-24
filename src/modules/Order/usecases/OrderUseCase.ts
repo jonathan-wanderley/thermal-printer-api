@@ -1,7 +1,9 @@
 import AppError from '../../../infra/errors/AppError';
 import IOrderRepository from '../../../repositories/Order/interface';
 import IProductRepository from '../../../repositories/Product/interface';
+import PrinterService from '../../../services/PrinterService';
 import CreateOrderDTO from './dtos/CreateDTO';
+const { ObjectId } = require('mongoose').Types;
 
 export default class OrderUseCase {
   private orderRepository: IOrderRepository;
@@ -67,5 +69,18 @@ export default class OrderUseCase {
 
     const newOrder = await this.orderRepository.create(dataObject);
     return newOrder;
+  }
+
+  async finish(id: string) {
+    if(!ObjectId.isValid(id)) {
+      throw new AppError(400, 'Id invalido');
+    }
+
+    const finishedOrder = await this.orderRepository.finish(id);
+    if(!finishedOrder) {
+      throw new AppError(404, 'Id não encontrado');
+    }
+
+    return finishedOrder;
   }
 }

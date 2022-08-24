@@ -14,4 +14,14 @@ export default class OrderController {
       res.json(order);
     };
   }
+
+  get finish() {
+    return async (req: Request, res: Response) => {
+      const { id } = req.params;
+
+      const result = await this.usecase.finish(id);
+
+      res.json(result);
+    }
+  }
 }
