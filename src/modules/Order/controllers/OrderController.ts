@@ -24,4 +24,13 @@ export default class OrderController {
       res.json(result);
     }
   }
+
+  get kitchen() {
+    return async (req: Request, res: Response) => {
+
+      const result = await this.usecase.kitchen();
+
+      res.json(result);
+    }
+  }
 }

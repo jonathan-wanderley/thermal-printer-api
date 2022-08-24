@@ -87,4 +87,14 @@ export default class OrderUseCase {
 
     return finishedOrder;
   }
+
+  async kitchen() {
+    const inProgressOrders = await this.orderRepository.getAndSortTodayOrders(true, "asc");
+    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "asc");
+
+    return {
+      inProgress: inProgressOrders,
+      finished: finishedOrders,
+    }
+  }
 }
