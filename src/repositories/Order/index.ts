@@ -24,6 +24,18 @@ export default class OrderRepository implements IOrderRepository {
     });
   }
 
+  async getAndSortTodayOrders(doneInput: boolean, sortType: "asc" | "desc") {
+    return await this.orderModel
+      .find({
+        done: doneInput,
+        createdAt: {
+          $gte: startOfDay(new Date()),
+          $lte: endOfDay(new Date()),
+        }
+      })
+      .sort({ orderNumber: sortType });
+  }
+
   async finish(id: string) {
     return await this.orderModel.findOneAndUpdate({ _id: id }, { done: true }, { new: true })
   }
