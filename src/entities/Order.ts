@@ -11,8 +11,13 @@ export const orderSchema = new Schema<IOrder>(
     },
     products: [
       {
-        type: Schema.Types.ObjectId,
-        ref: 'Product',
+        id: {
+          type: Schema.Types.ObjectId,
+          ref: 'Product',
+        },
+        name: {
+          type: Schema.Types.String,
+        },
       },
     ],
     payment: {
@@ -25,7 +30,7 @@ export const orderSchema = new Schema<IOrder>(
       moneyChange: {
         type: Schema.Types.Number,
       },
-      method: [
+      methods: [
         {
           type: Schema.Types.String,
         },
@@ -33,6 +38,12 @@ export const orderSchema = new Schema<IOrder>(
     },
     note: {
       type: Schema.Types.String,
+    },
+    done: {
+      type: Schema.Types.Boolean,
+    },
+    finishedTime: {
+      type: Schema.Types.Date,
     },
   },
   { timestamps: true },

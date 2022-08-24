@@ -4,12 +4,19 @@ import IProduct from './IProduct';
 export default interface IOrder {
   orderNumber: number;
   clientName: string;
-  products: [Schema.Types.ObjectId | IProduct];
+  products: [
+    {
+      id: Schema.Types.ObjectId | IProduct;
+      name: string;
+    },
+  ];
   payment: {
     orderTotal: number;
     amountPaid: number;
     moneyChange: number;
-    method: string[];
+    methods: string[];
   };
   note: string;
+  done: boolean;
+  finishedTime: Date;
 }
