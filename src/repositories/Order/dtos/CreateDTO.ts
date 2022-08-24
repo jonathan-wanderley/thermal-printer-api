@@ -13,4 +13,5 @@ export default interface CreateOrderDTO {
     methods: string;
   };
   note: string;
+  done: boolean;
 }
