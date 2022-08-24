@@ -8,7 +8,10 @@ export default class OrderController {
     this.usecase = usecase;
   }
 
-  async create() {
-    return 0;
+  get create() {
+    return async (req: Request, res: Response) => {
+      const order = await this.usecase.create(req.body);
+      res.json(order);
+    };
   }
 }
