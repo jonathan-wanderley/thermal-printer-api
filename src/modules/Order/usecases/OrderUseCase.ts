@@ -16,6 +16,24 @@ export default class OrderUseCase {
     this.productRepository = productRepository;
   }
 
+  async getNewOrderNumber() {
+    const inProgressOrders = await this.orderRepository.getTodayOrders();
+
+    if(!inProgressOrders) {
+      return 1;
+    }
+
+    const lastOrderNumber = inProgressOrders.reduce((accumulator: number, order: { orderNumber: number; }) => {
+      if (order.orderNumber > accumulator) {
+        return order.orderNumber;
+      } else {
+        return accumulator;
+      }
+    } , 0);
+
+    return lastOrderNumber+1;
+  }
+
   async create(payload: CreateOrderDTO) {
     // eslint-disable-next-line prettier/prettier
     const productArray = await this.productRepository.returnArrayWithName(payload.products);
@@ -31,8 +49,10 @@ export default class OrderUseCase {
       );
     }
 
+    const generatedOrderNumber = await this.getNewOrderNumber()
 
     const dataObject = {
+      orderNumber: generatedOrderNumber,
       clientName: payload.clientName,
       products: productArray,
       payment: {

@@ -1,4 +1,5 @@
 export default interface CreateOrderDTO {
+  orderNumber: number;
   clientName: string;
   products: [
     {
