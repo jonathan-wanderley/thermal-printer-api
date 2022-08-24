@@ -23,4 +23,36 @@ export default class ProductRepository implements IProductRepository {
       $or: [{ _id: possibleId }, { name: search }],
     });
   }
+
+  async countTotalPrice(productIdList: Array<string>): Promise<any> {
+    const transformedArray = productIdList.map(productId => {
+      return { _id: productId };
+    });
+
+    const productList = await this.productModel.find({
+      $or: transformedArray,
+    });
+
+    return productList.reduce(
+      (accumulator, product) => (accumulator + product.price) as number,
+      0,
+    );
+  }
+
+  async returnArrayWithName(IdList: Array<string>) {
+    const transformedArray: any[] = [];
+
+    IdList.forEach(async productId => {
+      const product = await this.productModel.findById(productId);
+
+      if (product) {
+        transformedArray.push({
+          _id: productId,
+          name: product.name,
+        });
+      }
+    });
+    
+    return transformedArray;
+  }
 }
