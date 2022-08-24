@@ -68,6 +68,10 @@ export default class OrderUseCase {
     };
 
     const newOrder = await this.orderRepository.create(dataObject);
+
+    const printer = new PrinterService();
+    printer.print("printer message");
+
     return newOrder;
   }
 
