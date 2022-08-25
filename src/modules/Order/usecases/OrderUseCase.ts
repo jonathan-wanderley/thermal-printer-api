@@ -75,6 +75,10 @@ export default class OrderUseCase {
     return newOrder;
   }
 
+  async delete(id: string) {
+    return await this.orderRepository.delete(id);
+  }
+
   async finish(id: string) {
     if(!ObjectId.isValid(id)) {
       throw new AppError(400, 'Id invalido');

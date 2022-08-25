@@ -15,6 +15,14 @@ export default class OrderController {
     };
   }
 
+  get delete() {
+    return async (req: Request, res: Response) => {
+      const { id } = req.params;
+      await this.usecase.delete(id)
+      res.status(204).send("");
+    }
+  }
+
   get finish() {
     return async (req: Request, res: Response) => {
       const { id } = req.params;
