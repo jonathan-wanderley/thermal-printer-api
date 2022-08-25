@@ -94,7 +94,7 @@ export default class OrderUseCase {
 
   async kitchen() {
     const inProgressOrders = await this.orderRepository.getAndSortTodayOrders(false, "asc");
-    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "asc");
+    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "desc");
 
     return {
       inProgress: inProgressOrders,
