@@ -101,4 +101,17 @@ export default class OrderUseCase {
       finished: finishedOrders,
     }
   }
+
+  async withdrawal() {
+    const inProgressOrders = await this.orderRepository.getAndSortTodayOrders(false, "asc");
+    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "desc");
+
+    const inProgressClientNames = inProgressOrders.map((order: any) => order.clientName);
+    const finishedClientNames = finishedOrders.map((order: any) => order.clientName);
+
+    return {
+      inProgress: inProgressClientNames,
+      finished: finishedClientNames,
+    }
+  }
 }

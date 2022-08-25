@@ -41,4 +41,13 @@ export default class OrderController {
       res.json(result);
     }
   }
+
+  get withdrawal() {
+    return async (req: Request, res: Response) => {
+
+      const result = await this.usecase.withdrawal();
+
+      res.json(result)
+    }
+  }
 }
