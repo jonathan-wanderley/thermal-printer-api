@@ -4,7 +4,6 @@ import 'express-async-errors';
 import BaseRoutes from './BaseRoutes';
 import errorHandler from './middlewares/errorHandler';
 import path from 'path';
-import cors from 'cors';
 import http from 'http';
 import { Server as SocketServer } from 'socket.io'
 import socket from '../sockets';
