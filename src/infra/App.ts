@@ -7,6 +7,8 @@ import path from 'path';
 import http from 'http';
 import { Server as SocketServer } from 'socket.io'
 import socket from '../sockets';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJson from "./docs/swagger.json";
 
 export default class App {
   private instance: Application;
@@ -27,6 +29,8 @@ export default class App {
     this.instance.use(BaseRoutes);
     this.instance.use(errorHandler);
     this.instance.use(Express.static(path.join(__dirname, '../../public')));
+
+    this.instance.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
     await mongoDBConnection.createConnection();
     socket.server(io);
