@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "tsc",
+    "start": "node dist",
     "prepare": "husky install",
     "commit": "git-cz"
   },
