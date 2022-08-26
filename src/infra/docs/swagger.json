@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "FinanceBox API",
-        "description": "A finance organization system",
+        "title": "Devio FastFood API",
+        "description": "PDV FastFood",
         "contact": {
             "email": "jonathan.wpc@gmail.com"
         },
