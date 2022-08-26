@@ -75,6 +75,10 @@ export default class OrderUseCase {
     return newOrder;
   }
 
+  async delete(id: string) {
+    return await this.orderRepository.delete(id);
+  }
+
   async finish(id: string) {
     if(!ObjectId.isValid(id)) {
       throw new AppError(400, 'Id invalido');
@@ -90,11 +94,24 @@ export default class OrderUseCase {
 
   async kitchen() {
     const inProgressOrders = await this.orderRepository.getAndSortTodayOrders(false, "asc");
-    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "asc");
+    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "desc");
 
     return {
       inProgress: inProgressOrders,
       finished: finishedOrders,
+    }
+  }
+
+  async withdrawal() {
+    const inProgressOrders = await this.orderRepository.getAndSortTodayOrders(false, "asc");
+    const finishedOrders = await this.orderRepository.getAndSortTodayOrders(true, "desc");
+
+    const inProgressClientNames = inProgressOrders.map((order: any) => order.clientName);
+    const finishedClientNames = finishedOrders.map((order: any) => order.clientName);
+
+    return {
+      inProgress: inProgressClientNames,
+      finished: finishedClientNames,
     }
   }
 }
