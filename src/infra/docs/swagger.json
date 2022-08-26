@@ -1,0 +1,390 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FinanceBox API",
+        "description": "A finance organization system",
+        "contact": {
+            "email": "jonathan.wpc@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/products": {
+            "get": {
+                "summary": "Exibe os produtos cadastrados no restaurante",
+                "description": "Essa rota é responsavel por retornar os produtos cadastrados no restaurante",
+                "tags": [
+                    "Produtos"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "search",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": false,
+                        "description": "Filtra os produtos por nome ou id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um array com os produtos cadastrados no restaurante",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/get_transactions"
+                                },
+                                "example": {
+                                    "categories": [],
+                                        "_id": "6304320ad580459829959c28",
+                                        "name": "CheeseBurguer",
+                                        "ingredients": [
+                                            "Pão",
+                                            "Hamburguer",
+                                            "Mussarela",
+                                            "Cheddar",
+                                            "Alface",
+                                            "Tomate",
+                                            "Cebola",
+                                            "Picles",
+                                            "Molho Especial"
+                                        ],
+                                        "photo": "https://www.photo.com.br/image/cheeseburguer.png",
+                                        "price": 15.90
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "post": {
+                "summary": "Cadastra um pedido",
+                "description": "Essa rota é responsavel por efeturar pedidos",
+                "tags": [
+                    "Pedidos"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/pedido"
+                            },
+                            "example": {
+                                "clientName": "Luana",
+                                "products": [
+                                    "6304320ad580459829959c28",
+                                    "6304d77e7606f51dd3fcfef6",
+                                    "6304da127606f51dd3fcfef8"
+                                ],
+                                "payment": {
+                                    "amountPaid": 200,
+                                    "methods": ["Dinheiro"]
+                                },
+                                "note": "Tirar cebola"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad request because invalid characters were entered or the email is already registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/error_obj"
+                                },
+                                "example": {
+                                    "error": {
+                                        "email": {
+                                            "msg": "Invalid email"
+                                        },
+                                        "password": {
+                                            "msg": "Password must be at least 4 characters"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "If the data is valid, the user will be registered and the API will return a JWT token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/token"
+                                },
+                                "example": {
+                                    "token": "al3e1A92ndx0b1hzs9rjk4sl56389drj3uj4a9r"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "orders/{id}": {
+            "delete": {
+                "summary": "Deleta um pedido",
+                "description": "Essa rota é responsavel por deletar os pedidos",
+                "tags": [
+                    "Pedidos"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Retorna um status 204 e um body vazio"
+                    }
+                }
+            }
+        },
+
+        "/orders/finish/{id}": {
+            "post": {
+                "summary": "Encerra um pedido",
+                "description": "Essa rota é responsavel por encerrar pedidos, ou seja, marcar-los como concluidos",
+                "tags": [
+                    "Pedidos"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Rertorna um status 400 caso o id enviado seja inválido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/error_obj"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Retorna um status 404 caso não exista nenhum pedido com esse id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/error_obj"
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "Retorna os dados do pedido encerrado, inclusive o campo 'done' como true indicando que o pedido foi concluido",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/pedido"
+                                },
+                                "example": {
+                                    "msg": "Successfully updated"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kitchen": {
+            "get": {
+                "summary": "Retorna os pedidos finalizados e em andamento",
+                "description": "Essa rota é responsavel por retornar dois arrays de pedidos, um com pedidos os finalizados e outro com os pedidos em andamento",
+                "tags": [
+                    "Pedidos"
+                ],
+
+                "responses": {
+                    "200": {
+                        "description": "Retorna um status 200 e dois arrays de pedidos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/kitchen"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/withdrawal": {
+            "get": {
+                "summary": "Retorna os nomes dos clientes separados em pedidos finalizados e em andamento",
+                "description": "Essa rota é responsavel por retornar dois arrays com os nomes dos clientes, um array é para pedidos finalizados e outro para pedidos em andamento",
+                "tags": [
+                    "Pedidos"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna um status 200 e dois arrays de pedidos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/kitchen"
+                                },
+                                "example": {
+                                    "inProgress": [
+                                        "Luana",
+                                        "Maria"
+                                    ],
+                                    "finished": [
+                                        "Paulo",
+                                        "Vera",
+                                        "Cardoso"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "error_obj": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "boolean"
+                    },
+                    "statusCode": {
+                        "type": "number"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "pedido": {
+                "type": "object",
+                "properties": {
+                    "clientName": {
+                        "type": "string"
+                    },
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "payment": {
+                        "type": "object",
+                        "properties": {
+                            "amountPaid": {
+                                "type": "number"
+                            },
+                            "methods": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "note": {
+                        "type": "string"
+                    }
+                }
+            },
+            "pedidofull": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
+                    "orderNumber": {
+                        "type": "number"
+                    },
+                    "clientName": {
+                        "type": "string"
+                    },
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "payment": {
+                        "type": "object",
+                        "properties": {
+                            "orderTotal": {
+                                "type": "number"
+                            },
+                            "amountPaid": {
+                                "type": "number"
+                            },
+                            "moneyChange": {
+                                "type": "string"
+                            },
+                            "methods": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "note": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "kitchen": {
+                "type": "object",
+                "properties": {
+                    "inProgress": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "finished": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "withdrawal": {
+                "type": "object",
+                "properties": {
+                    "inProgress": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "finished": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

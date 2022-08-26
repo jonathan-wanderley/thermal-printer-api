@@ -15,6 +15,14 @@ export default class OrderController {
     };
   }
 
+  get delete() {
+    return async (req: Request, res: Response) => {
+      const { id } = req.params;
+      await this.usecase.delete(id)
+      res.status(204).send("");
+    }
+  }
+
   get finish() {
     return async (req: Request, res: Response) => {
       const { id } = req.params;
@@ -31,6 +39,15 @@ export default class OrderController {
       const result = await this.usecase.kitchen();
 
       res.json(result);
+    }
+  }
+
+  get withdrawal() {
+    return async (req: Request, res: Response) => {
+
+      const result = await this.usecase.withdrawal();
+
+      res.json(result)
     }
   }
 }

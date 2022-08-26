@@ -15,6 +15,10 @@ export default class OrderRepository implements IOrderRepository {
     return createdUser;
   }
 
+  async delete(id: string): Promise<any> {
+    return await this.orderModel.deleteOne({ _id: id });
+  }
+
   async getTodayOrders() {
     return await this.orderModel.find({
       createdAt: {
