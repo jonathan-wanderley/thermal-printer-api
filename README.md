@@ -30,14 +30,14 @@
 Tabela de conteúdos
 =================
 <!--ts-->
-  * [Sobre](#-sobre)
-   * [Funcionalidades](#-funcionalidades)
-   * [Conhecimentos aplicado](#-conhecimentos-aplicados)
+  * [Sobre](#-sobre-o-desafio)
+   * [Funcionalidades](#%EF%B8%8F-funcionalidades)
+   * [Conhecimentos aplicados](#-conhecimentos-aplicados)
    * [Como executar o projeto](#-como-executar-o-projeto)
      * [Pré-requisitos](#pré-requisitos)
-     * [Rodando o Projeto](#user-content--rodando-o-projeto)
+     * [Rodando o Projeto](#-rodando-o-projeto)
    * [Tecnologias](#-tecnologias)
-     * [Server](#user-content-server--nodejs----mongodb)
+     * [Servidor](#servidor--nodejs----mongodb)
    * [Como contribuir no projeto](#-como-contribuir-no-projeto)
    * [Autor](#-autor)
 <!--te-->
@@ -46,7 +46,8 @@ Tabela de conteúdos
 ## 📦 Sobre o desafio
 
 Esse é um desafio de programação da empresa [Devio](https://github.com/deviobr) no teste para a vaga de Desenvolvedor Backend Jr
-O objetivo do desafio é desenvolver um sistema PDV para um restaurante FastFood para facilitar os pedidos, pagamentos e controle das filas de cliente possibilitando a listagem e checkout dos pedidos.
+
+O objetivo do desafio é desenvolver um sistema PDV para um restaurante FastFood com foco em facilitar os pedidos, pagamentos e controle das filas de cliente possibilitando a listagem e checkout dos pedidos.
 
 ---
 
@@ -77,8 +78,9 @@ O objetivo do desafio é desenvolver um sistema PDV para um restaurante FastFood
 - [x] Arquitetura divida em camadas(controllers, usecases/services e repositories)
 - [X] Padronização de commits utilizando Convencional Commits
 - [x] Padronização de código em inglês
-- [x] Boas praticas de codificação e código limpa
+- [x] Boas praticas de codificação e código limpo
 
+**Obs**: *Não foi possivel implementar os testes automatizados por causa da escassez de tempo* 😕
 
 
 ---
@@ -113,7 +115,7 @@ $ npm install
 # O modelo padrão de URL MongoDB é esse: mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
 # Você pode consultar mais detalhes aqui nesse link: https://www.mongodb.com/docs/manual/reference/connection-string/
 
-# No campo PRITNER_PORT você irá configurar de acordo com sua impressora termica
+# No campo PRINTER_PORT você irá configurar de acordo com sua impressora termica
 
 # Após configurar é só salvar seu arquivo .env com suas variaveis de ambiente
 
@@ -135,7 +137,7 @@ $ npm run start
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
-#### **Server**  ([NodeJS](https://nodejs.org/en/)  +  [MongoDB](https://www.mongodb.com/pt-br))
+#### **Servidor**  ([NodeJS](https://nodejs.org/en/)  +  [MongoDB](https://www.mongodb.com/pt-br))
 
 -   **[Express]()**
 -   **[CORS]()**
@@ -160,7 +162,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 #### **Utilitários**
 
 -   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**
--   Fontes:  **[Carter One](https://fonts.google.com/specimen/Carter+One?query=carter+one)**,  **[Open Sans](https://fonts.google.com/specimen/Open+Sans?query=open+sans)** e **[Montserrat](https://fonts.google.com/specimen/Montserrat)**
 -   Interface para MongoDB: **[MongoDB](https://www.mongodb.com/pt-br/products/compass)** 
 
 
@@ -170,9 +171,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## 💪 Como contribuir no projeto
 
 1. Faça um **fork** do projeto.
-2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
-3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
-4. Envie as suas alterações: `git push origin my-feature`
+2. Crie uma nova branch com as suas alterações: `git checkout -b feature/my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feat: my new feature"`
+4. Envie as suas alterações: `git push origin feature/my-feature`
 
 ---
 
@@ -186,6 +187,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ---
 
-Feito com 💜 por Jonathan Wanderley para o teste prático da Devio 👋🏽 [Entre em contato!](https://www.linkedin.com/in/jonathan-wanderley/)
+Feito com 💜 por Jonathan Wanderley para o teste prático da Devio 👋🏽
+
+[Entre em contato!](https://www.linkedin.com/in/jonathan-wanderley/)
 
 ---
