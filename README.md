@@ -10,12 +10,11 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jonathan-wanderley/chatzinho?color=%2304D361">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jonathan-wanderley/chatzinho">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jonathan-wanderley/devio-fastfood-server">
   
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jonathan-wanderley/chatzinho">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jonathan-wanderley/devio-fastfood-server">
     
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
-  <img alt="Stars" src="https://img.shields.io/github/stars/jonathan-wanderley/chatzinho?style=social">
+  <img alt="Stars" src="https://img.shields.io/github/stars/jonathan-wanderley/devio-fastfood-server?style=social">
 
   <a href="https://github.com/jonathan-wanderley">
     <img alt="Feito por Jonathan" src="https://img.shields.io/badge/feito%20por-Jonathan-%237519C1">
@@ -42,12 +41,15 @@ Tabela de conteúdos
    * [Autor](#-autor)
 <!--te-->
 
+---
 
 ## 📦 Sobre o desafio
 
-Esse é um desafio de programação da empresa [Devio](https://github.com/deviobr) no teste para a vaga de Desenvolvedor Backend Jr
+Esse é um desafio de programação da empresa [Devio](https://github.com/deviobr) no teste para a vaga de Desenvolvedor Backend.
 
 O objetivo do desafio é desenvolver um sistema PDV para um restaurante FastFood com foco em facilitar os pedidos, pagamentos e controle das filas de cliente possibilitando a listagem e checkout dos pedidos.
+
+*Voce pode achar mais informações do desafio clicando* [AQUI](https://github.com/deviobr/challenges/blob/main/challenge-backend.md)
 
 ---
 
@@ -167,6 +169,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ---
 
+## 🔗 Links
+
+- Documentação da API: https://devio-fastfood-api.herokuapp.com/docs/
+- Deploy: https://devio-fastfood-api.herokuapp.com/
+
+
+---
 
 ## 💪 Como contribuir no projeto
 
