@@ -9,13 +9,13 @@ export default class PrinterService {
 
   constructor() {
     this.printer = new ThermalPrinter({
-      type: PrinterTypes.EPSON,                                  // Printer type: 'star' or 'epson'
-      interface: 'printer-output.txt',                       // Printer interface
-      characterSet: 'SLOVENIA',                                 // Printer character set - default: SLOVENIA
-      removeSpecialCharacters: false,                           // Removes special characters - default: false
-      lineCharacter: "=",                                       // Set character for lines - default: "-"
-      options:{                                                 // Additional options
-        timeout: 5000                                           // Connection timeout (ms) [applicable only for network printers] - default: 3000
+      type: PrinterTypes.EPSON,
+      interface: ENV.PRINTER_PORT,
+      characterSet: 'SLOVENIA',
+      removeSpecialCharacters: false,
+      lineCharacter: "=",
+      options:{
+        timeout: 5000
       }
     });
 
