@@ -10,6 +10,7 @@ import { Server as SocketServer } from 'socket.io'
 import socket from '../sockets';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJson from "./docs/swagger.json";
+import PrinterService from '../services/PrinterService';
 
 export default class App {
   private instance: Application;
@@ -41,7 +42,8 @@ export default class App {
       console.log(`Server running on port: ${selectedPort}`);
     });
 
-
+    const printer = new PrinterService();
+    printer.checkConnection();
   }
 
   getInstance() {

@@ -67,12 +67,38 @@ export default class OrderUseCase {
       done: false,
     };
 
+
     const newOrder = await this.orderRepository.create(dataObject);
 
     const printer = new PrinterService();
-    printer.print("printer message");
+    printer.print(this.generateFormattedOrderString(dataObject));
 
     return newOrder;
+  }
+
+  generateFormattedOrderString(object: any): string {
+    let string = '';
+    string += `\nN do Pedido: ${object.orderNumber}\n`;
+    string += `Cliente: ${object.clientName}\n\n`;
+
+    string += `Pedidos:\n`;
+    object.products.forEach((product: any) => {
+      string += `  - ${product.name}\n`;
+    });
+    string += `\n`;
+
+    string += `Pagamento:\n`;
+    string += `  Metodos de Pagamento:\n`;
+    object.payment.methods.forEach((method: any) => {
+      string += `    - ${method}\n`;
+    })
+    string += `  Valor total: ${object.payment.orderTotal}\n`;
+    string += `  Valor pago: ${object.payment.amountPaid}\n`;
+    string += `  Troco: ${object.payment.moneyChange}\n\n`;
+
+    string += `Observacao do cliente: ${object.note}\n`;
+
+    return string;
   }
 
   async delete(id: string) {
