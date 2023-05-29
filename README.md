@@ -1,20 +1,14 @@
 
-
-
-<p align="center">
-  <img src="https://github.com/deviobr/code-patterns/blob/main/images/devio.webp?raw=true" />
-</p>
-
-<h1 align="center">Teste de Programação | Ponto De Venda – Fast Food / Back-end</h1>
+<h1 align="center">Ponto De Venda – Fast Food / Back-end</h1>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jonathan-wanderley/chatzinho?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jonathan-wanderley/thermal-printer-api?color=%2304D361">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jonathan-wanderley/devio-fastfood-server">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jonathan-wanderley/thermal-printer-api">
   
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jonathan-wanderley/devio-fastfood-server">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jonathan-wanderley/thermal-printer-api">
     
-  <img alt="Stars" src="https://img.shields.io/github/stars/jonathan-wanderley/devio-fastfood-server?style=social">
+  <img alt="Stars" src="https://img.shields.io/github/stars/jonathan-wanderley/thermal-printer-api?style=social">
 
   <a href="https://github.com/jonathan-wanderley">
     <img alt="Feito por Jonathan" src="https://img.shields.io/badge/feito%20por-Jonathan-%237519C1">
@@ -29,7 +23,6 @@
 Tabela de conteúdos
 =================
 <!--ts-->
-  * [Sobre](#-sobre-o-desafio)
    * [Funcionalidades](#%EF%B8%8F-funcionalidades)
    * [Conhecimentos aplicados](#-conhecimentos-aplicados)
    * [Como executar o projeto](#-como-executar-o-projeto)
@@ -45,11 +38,8 @@ Tabela de conteúdos
 
 ## 📦 Sobre o desafio
 
-Esse é um desafio de programação da empresa [Devio](https://github.com/deviobr) no teste para a vaga de Desenvolvedor Backend.
+Sistema PDV para um restaurante FastFood com foco em facilitar os pedidos, pagamentos e controle das filas de cliente possibilitando a listagem e checkout dos pedidos.
 
-O objetivo do desafio é desenvolver um sistema PDV para um restaurante FastFood com foco em facilitar os pedidos, pagamentos e controle das filas de cliente possibilitando a listagem e checkout dos pedidos.
-
-*Voce pode achar mais informações do desafio clicando* [AQUI](https://github.com/deviobr/challenges/blob/main/challenge-backend.md)
 
 ---
 
@@ -77,13 +67,11 @@ O objetivo do desafio é desenvolver um sistema PDV para um restaurante FastFood
 - [x] Express para criação do servidor
 - [X] Documentação criada com Swagger
 - [x] Uso de Socket.IO para implementação de web sockets
-- [x] Arquitetura divida em camadas(controllers, usecases/services e repositories)
+- [x] Aplicação em camadas - Controllers, Usecases/Services e Repositories
 - [X] Padronização de commits utilizando Convencional Commits
 - [x] Padronização de código em inglês
 - [x] Boas praticas de codificação e código limpo
-
-**Obs**: *Não foi possivel implementar os testes automatizados por causa da escassez de tempo* 😕
-
+- [x] Testes automatizados
 
 ---
 
@@ -100,10 +88,10 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/jonathan-wanderley/devio-fastfood-server.git
+$ git clone https://github.com/jonathan-wanderley/thermal-printer-api.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd devio-fastfood-server
+$ cd thermal-printer-api
 
 # Instale as dependências
 $ npm install
@@ -157,7 +145,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Serialport]()**
 -   **[Swagger-ui-express]()**
 
-> Veja o arquivo  [package.json](https://github.com/jonathan-wanderley/devio-fastfood-server/blob/main/package.json)
+> Veja o arquivo  [package.json](https://github.com/jonathan-wanderley/thermal-printer-api/blob/main/package.json)
 
 
 
@@ -168,12 +156,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 
 ---
-
-## 🔗 Links
-
-- Documentação da API: https://devio-fastfood-api.herokuapp.com/docs/
-- Deploy: https://devio-fastfood-api.herokuapp.com/
-
 
 ---
 
