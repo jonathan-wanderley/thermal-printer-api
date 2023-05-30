@@ -36,7 +36,7 @@ Tabela de conteúdos
 
 ---
 
-## 📦 Sobre o desafio
+## 📦 Sobre
 
 Sistema PDV para um restaurante FastFood com foco em facilitar os pedidos, pagamentos e controle das filas de cliente possibilitando a listagem e checkout dos pedidos.
 
@@ -69,9 +69,7 @@ Sistema PDV para um restaurante FastFood com foco em facilitar os pedidos, pagam
 - [x] Uso de Socket.IO para implementação de web sockets
 - [x] Aplicação em camadas - Controllers, Usecases/Services e Repositories
 - [X] Padronização de commits utilizando Convencional Commits
-- [x] Padronização de código em inglês
-- [x] Boas praticas de codificação e código limpo
-- [x] Testes automatizados
+- [ ] Testes automatizados
 
 ---
 
