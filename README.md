@@ -176,8 +176,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ---
 
-Feito com 💜 por Jonathan Wanderley para o teste prático da Devio 👋🏽
-
 [Entre em contato!](https://www.linkedin.com/in/jonathan-wanderley/)
 
 ---
